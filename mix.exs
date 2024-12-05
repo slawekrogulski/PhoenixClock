@@ -55,8 +55,7 @@ defmodule LiveViewStudio.MixProject do
       {:faker, "~> 0.17.0"},
       {:number, "~> 1.0"},
       {:timex, "~> 3.7"},
-      {:typed_struct, "~> 0.3.0"},
-      {:paginator, path: "~/elixir/paginator"}
+      {:typed_struct, "~> 0.3.0"}
     ]
   end
 
