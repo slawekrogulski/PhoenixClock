@@ -3,5 +3,4 @@ defmodule LiveViewStudio.Repo do
     otp_app: :live_view_studio,
     adapter: Ecto.Adapters.Postgres
 
-  use Paginator
 end
