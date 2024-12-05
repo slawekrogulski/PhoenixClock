@@ -52,7 +52,7 @@ defmodule LiveViewStudioWeb.ClockLive do
       nil
     end
 
-    current_datetime = Timex.local()
+    current_datetime = Timex.now("Asia/Singapore")
     socket
     |> assign_current_time(current_datetime)
     |> assign_sounds()
