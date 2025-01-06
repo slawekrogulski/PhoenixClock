@@ -156,6 +156,7 @@ defmodule LiveViewStudioWeb.ClockLive do
 
   defp chime_count(h) when h > 12, do: h - 12
   defp chime_count(h)            , do: h
+
   @icons %{
     0 => "arrows-pointing-in",
     1 => "arrows-pointing-out",
@@ -169,15 +170,15 @@ defmodule LiveViewStudioWeb.ClockLive do
 
   defp icon(s1, s2) do
     seconds = fromDigits(s1, s2)
-    i = %{}
-    |> Map.put(0, "up")
-    |> Map.put(1, "up-right")
-    |> Map.put(2, "right")
-    |> Map.put(3, "down-right")
-    |> Map.put(4, "down")
-    |> Map.put(5, "down-left")
-    |> Map.put(6, "left")
-    |> Map.put(7, "up-left")
+    # i = %{}
+    # |> Map.put(0, "up")
+    # |> Map.put(1, "up-right")
+    # |> Map.put(2, "right")
+    # |> Map.put(3, "down-right")
+    # |> Map.put(4, "down")
+    # |> Map.put(5, "down-left")
+    # |> Map.put(6, "left")
+    # |> Map.put(7, "up-left")
 
 
     "hero-" <> Map.get(@icons, rem(seconds, 2), "")
