@@ -46,13 +46,15 @@ defmodule LiveViewStudioWeb.ClockLive do
   @day_names_polish   %{1 => "Poniedziałek", 2 => "Wtorek",  3 => "Środa",     4 => "Czwartek", 5 => "Piątek", 6 => "Sobota",   7 => "Niedziela"}
   @day_names_malay    %{1 => "Isnin",        2 => "Selasa",  3 => "Rabu",      4 => "Khamis",   5 => "Jumaat", 6 => "Sabtu",    7 => "Ahad"}
   @day_names_japanese %{1 => "月曜日",        2 => "火曜日",   3 => "水曜日",      4 => "木曜日",    5 => "金曜日",  6 => "土曜日",    7 => "日曜日"}
+  @day_names_japanese_romaji %{1 => "Getsuyoubi", 2 => "Kayoubi", 3 => "Suiyoubi", 4 => "Mokuyoubi", 5 => "Kinyoubi", 6 => "Doyoubi", 7 => "Nichiyoubi"}
   @day_names %{
     0 => @day_names_english,
     1 => @day_names_polish,
     2 => @day_names_malay,
-    3 => @day_names_japanese
+    3 => @day_names_japanese,
+    4 => @day_names_japanese_romaji
   }
-  @day_names_count @day_names |> Kernel.map_size()
+    @day_names_count @day_names |> Kernel.map_size()
 
   def mount(_params, _session, socket) do
     timer_ref = if connected?(socket) do
