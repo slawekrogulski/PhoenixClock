@@ -68,9 +68,13 @@ defmodule LiveViewStudioWeb.ClockLive do
     ~H"""
     <div id="s" phx-hook="AudioMp3" data-sounds={@sounds} >
     <%!-- <div id="s" phx-hook="LocalTimeZone" data-sounds={@sounds} > --%>
-      <body id="clock" >
-        <%=@h1%><%=@h2%><%=@sp%><%=@m1%><%=@m2%>
-        <%= @day_name %>
+      <body >
+        <div id="clock">
+          <%=@h1%><%=@h2%><%=@sp%><%=@m1%><%=@m2%>
+        </div>
+        <div id="day_name">
+          <%= @day_name %>
+        </div>
       </body>
     </div>
     """
