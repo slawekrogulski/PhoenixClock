@@ -18,11 +18,8 @@ defmodule LiveViewStudio.Application do
       {Finch, name: LiveViewStudio.Finch},
       # Start the Endpoint (http/https)
       LiveViewStudioWeb.Endpoint,
-      LiveViewStudioWeb.Presence,
+      LiveViewStudioWeb.Presence
       # Start a worker by calling: LiveViewStudio.Worker.start_link(arg)
-      # {LiveViewStudio.Worker, arg}
-      Counter.UserSessionCounterSupervisor,
-      Bingo.BingoSupervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
