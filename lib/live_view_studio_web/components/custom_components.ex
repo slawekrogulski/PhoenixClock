@@ -3,7 +3,7 @@ defmodule LiveViewStudioWeb.CustomComponents do
 
   attr :expiration, :integer, default: 24
   slot :legal
-  slot :inner_block, require: true
+  slot :inner_block, required: true
   def promo(assigns) do
     ~H"""
     <div class="promo">
