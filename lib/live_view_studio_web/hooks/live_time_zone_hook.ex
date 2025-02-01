@@ -4,6 +4,13 @@ defmodule LiveViewStudioWeb.Hooks.LocalTimeZoneHook do
   use Phoenix.LiveView
   # use LiveViewStudioWeb, :live_view
 
+  def render(assigns) do
+    ~H"""
+    <div id="local-timezone" phx-hook="LocalTimeZoneHook" phx-update="ignore">
+      <%= @local_timezone %>
+    </div>
+    """
+  end
   def on_mount(:default, _params, _session, socket) do
     {:cont,
       socket

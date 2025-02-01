@@ -11,14 +11,14 @@ defmodule LiveViewStudio.Application do
       # Start the Telemetry supervisor
       LiveViewStudioWeb.Telemetry,
       # Start the Ecto repository
-      LiveViewStudio.Repo,
+      # LiveViewStudio.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: LiveViewStudio.PubSub},
       # Start Finch
       {Finch, name: LiveViewStudio.Finch},
       # Start the Endpoint (http/https)
-      LiveViewStudioWeb.Endpoint,
-      LiveViewStudioWeb.Presence
+      LiveViewStudioWeb.Endpoint
+      # LiveViewStudioWeb.Presence
       # Start a worker by calling: LiveViewStudio.Worker.start_link(arg)
     ]
 
