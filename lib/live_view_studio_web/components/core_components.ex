@@ -17,7 +17,7 @@ defmodule LiveViewStudioWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import LiveViewStudioWeb.Gettext
+  use Gettext, backend: LiveViewStudioWeb.Gettext
 
   @doc """
   Renders a modal.

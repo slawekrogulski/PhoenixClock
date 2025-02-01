@@ -43,7 +43,7 @@ defmodule LiveViewStudioWeb do
         layouts: [html: LiveViewStudioWeb.Layouts]
 
       import Plug.Conn
-      import LiveViewStudioWeb.Gettext
+      use Gettext, backend: LiveViewStudioWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -95,7 +95,7 @@ defmodule LiveViewStudioWeb do
       # Core UI components and translation
       import LiveViewStudioWeb.CoreComponents
       import LiveViewStudioWeb.CustomComponents
-      import LiveViewStudioWeb.Gettext
+      use Gettext, backend: LiveViewStudioWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
