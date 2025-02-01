@@ -55,6 +55,7 @@ defmodule LiveViewStudioWeb.ClockLive do
     current_datetime = Timex.now("Asia/Singapore")
     socket
     |> assign_current_time(current_datetime)
+    |> assign_day_name(current_datetime)
     |> assign_sounds()
     |> assign(last_chime_hr: "")
     |> assign(timer_ref: timer_ref)
@@ -69,6 +70,7 @@ defmodule LiveViewStudioWeb.ClockLive do
     <%!-- <div id="s" phx-hook="LocalTimeZone" data-sounds={@sounds} > --%>
       <body id="clock" >
         <%=@h1%><%=@h2%><%=@sp%><%=@m1%><%=@m2%>
+        <%= @day_name %>
       </body>
     </div>
     """
@@ -108,8 +110,15 @@ defmodule LiveViewStudioWeb.ClockLive do
     # current_datetime = Timex.local()
     socket
     |> assign_current_time(current_datetime)
+    |> assign_day_name(current_datetime)
     |> play_chime(current_datetime)
     |> noreply()
+  end
+
+  defp assign_day_name(socket, current_datetime) do
+    day_name = current_datetime |> Timex.weekday!() |> Timex.day_name()
+    socket
+    |> assign(day_name: day_name)
   end
 
   def local_time_zone(%{local_timezone: local_timezone}) do
