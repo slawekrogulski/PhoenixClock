@@ -10,8 +10,6 @@
 }
 
 
-/* Custom CSS for LiveView course */
-
 body {
   @apply antialiased relative bg-slate-200 font-sans;
 }
