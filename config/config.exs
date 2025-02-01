@@ -7,8 +7,8 @@
 # General application configuration
 import Config
 
-config :live_view_studio,
-  ecto_repos: [LiveViewStudio.Repo]
+# config :live_view_studio,
+#   ecto_repos: [LiveViewStudio.Repo]
 
 # Configures the endpoint
 config :live_view_studio, LiveViewStudioWeb.Endpoint,

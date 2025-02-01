@@ -1,14 +1,14 @@
 import Config
 
 # Configure your database
-config :live_view_studio, LiveViewStudio.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "live_view_studio_2ed_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+# config :live_view_studio, LiveViewStudio.Repo,
+#   username: "postgres",
+#   password: "postgres",
+#   hostname: "localhost",
+#   database: "live_view_studio_2ed_dev",
+#   stacktrace: true,
+#   show_sensitive_data_on_connection_error: true,
+#   pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
