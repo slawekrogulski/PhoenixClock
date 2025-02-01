@@ -41,7 +41,7 @@ config :esbuild,
 
 config :tailwind,
   version: "3.4.6",
-  live_view_studio: [
+  default: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

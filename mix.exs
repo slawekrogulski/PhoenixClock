@@ -73,10 +73,10 @@ defmodule LiveViewStudio.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind my_app", "esbuild my_app"],
+      "assets.build": ["tailwind default", "esbuild default"],
       "assets.deploy": [
-        "tailwind my_app --minify",
-        "esbuild my_app --minify",
+        "tailwind default --minify",
+        "esbuild default --minify",
         "phx.digest"
       ]
       # setup: ["deps.get", "assets.setup", "assets.build"],
