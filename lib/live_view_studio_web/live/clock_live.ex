@@ -42,7 +42,7 @@ defmodule LiveViewStudioWeb.ClockLive do
   # @space7 "↑↗→↘↓↙←↖"
   # @space8 "▲►▼◄"
 
-  @day_names_english  %{1 => "MonDay",       2 => "TuesDay", 3 => "WednesDay", 4 => "ThursDay", 5 => "FriDay", 6 => "SaturDay", 7 => "SunDay"}
+  @day_names_english  %{1 => "Monday",       2 => "Tuesday", 3 => "Wednesday", 4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
   @day_names_polish   %{1 => "Poniedziałek", 2 => "Wtorek",  3 => "Środa",     4 => "Czwartek", 5 => "Piątek", 6 => "Sobota",   7 => "Niedziela"}
   @day_names_malay    %{1 => "Isnin",        2 => "Selasa",  3 => "Rabu",      4 => "Khamis",   5 => "Jumaat", 6 => "Sabtu",    7 => "Ahad"}
   @day_names_japanese %{1 => "月曜日",        2 => "火曜日",   3 => "水曜日",      4 => "木曜日",    5 => "金曜日",  6 => "土曜日",    7 => "日曜日"}
