@@ -10,7 +10,7 @@
 }
 
 #day_name {
-  @apply text-7xl text-white text-center font-semibold;
+  @apply text-6xl text-white text-center font-semibold;
 }
 
 body {
