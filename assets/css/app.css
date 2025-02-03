@@ -6,7 +6,7 @@
 */
 
 #clock {
-  @apply text-red-600 text-center  font-mono text-9xl scale-125 py-4;
+  @apply text-red-600 text-center  font-mono text-9xl scale-150 py-4;
 }
 
 #day_name {
