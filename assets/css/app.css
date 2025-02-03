@@ -6,15 +6,15 @@
 */
 
 #clock {
-  @apply text-7xl text-red-600 text-center  font-mono;
+  @apply text-red-600 text-center  font-mono text-9xl scale-125 py-4;
 }
 
 #day_name {
-  @apply text-6xl text-white text-center font-semibold;
+  @apply text-9xl text-white text-center font-semibold scale-100 py-4 ;
 }
 
 body {
-  @apply antialiased relative bg-slate-200 font-sans bg-black;
+  @apply antialiased relative bg-slate-200 font-sans bg-black ;
 }
 
 nav {
