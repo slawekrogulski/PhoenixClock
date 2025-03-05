@@ -69,6 +69,7 @@ defmodule LiveViewStudioWeb.ClockLive do
     socket
     |> assign_current_time(current_datetime)
     |> assign_day_name(current_datetime)
+    |> assign_date(current_datetime)
     |> assign_sounds()
     |> assign(last_chime_hr: "")
     |> assign(timer_ref: timer_ref)
@@ -87,6 +88,9 @@ defmodule LiveViewStudioWeb.ClockLive do
         </div>
         <div id="day_name">
           <%= @day_name %>
+        </div>
+        <div id="date">
+          <%= @date %>
         </div>
       </body>
     </div>
@@ -128,6 +132,7 @@ defmodule LiveViewStudioWeb.ClockLive do
     socket
     |> assign_current_time(current_datetime)
     |> assign_day_name(current_datetime)
+    |> assign_date(current_datetime)
     |> play_chime(current_datetime)
     |> noreply()
   end
@@ -161,6 +166,11 @@ defmodule LiveViewStudioWeb.ClockLive do
     |> assign(m2: m2 |> number_as_emoji())
     |> assign(icon_name: icon(s2, s1))
     |> assign(sp: spacer(s1, s2))
+  end
+
+  def assign_date(socket, current_datetime) do
+    date = current_datetime |> Timex.format!("{0D}-{0M}-{YYYY}")
+    socket |> assign(date: date)
   end
 
   defp play_chime(socket, current_datetime) do
