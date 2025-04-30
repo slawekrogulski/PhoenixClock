@@ -124,7 +124,6 @@ defmodule LiveViewStudioWeb.ClockLive do
   end
 
   def handle_info(:tick, socket) do
-    # IO.inspect(socket.assigns, label: "assigns")
     local_timezone = Map.get(socket.assigns, :local_timezone, "Asia/Singapore")
     current_datetime = Timex.now(local_timezone)
     #  local_time_zone(socket.assigns)
