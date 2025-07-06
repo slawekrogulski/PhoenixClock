@@ -51,8 +51,8 @@ defmodule LiveViewStudioWeb.ClockLive do
     0 => @day_names_english,
     1 => @day_names_polish,
     2 => @day_names_malay,
-    3 => @day_names_japanese,
-    4 => @day_names_japanese_romaji
+    # 3 => @day_names_japanese,
+    # 4 => @day_names_japanese_romaji
   }
     @day_names_count @day_names |> Kernel.map_size()
 
