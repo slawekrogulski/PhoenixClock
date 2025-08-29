@@ -76,8 +76,6 @@ defmodule LiveViewStudioWeb.ClockLive do
     |> ok()
   end
 
-  # {@icon_name}
-  # <.icon class="h-12 w-12" name={@icon_name}}/>
   def render(assigns) do
     ~H"""
     <div id="s" phx-hook="AudioMp3" data-sounds={@sounds} >
