@@ -79,7 +79,6 @@ defmodule LiveViewStudioWeb.ClockLive do
   def render(assigns) do
     ~H"""
     <div id="s" phx-hook="AudioMp3" data-sounds={@sounds} >
-    <%!-- <div id="s" phx-hook="LocalTimeZone" data-sounds={@sounds} > --%>
       <body >
         <div id="clock">
           <%=@h1%><%=@h2%><%=@sp%><%=@m1%><%=@m2%>
