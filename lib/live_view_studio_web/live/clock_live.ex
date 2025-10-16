@@ -172,7 +172,6 @@ defmodule LiveViewStudioWeb.ClockLive do
     hr = current_datetime |> Timex.format!("{h24}")
     # hr = current_datetime |> Timex.format!("{0m}")
     if (time >= "0000" and time <= "0001" and socket.assigns.last_chime_hr != hr) do
-      # IO.inspect(current_datetime, label: "current_datetime")
       hours = current_datetime |> Timex.format!("{h24}") |> String.to_integer()
       socket
       |> assign(last_chime_hr: hr)
