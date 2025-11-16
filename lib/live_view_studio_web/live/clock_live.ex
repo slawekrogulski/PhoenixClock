@@ -180,7 +180,6 @@ defmodule LiveViewStudioWeb.ClockLive do
       # d = %{
       #   time: time, hr: hr, last_hr: socket.assigns.last_chime_hr
       # }
-      # IO.inspect(d)
       socket
     end
   end
