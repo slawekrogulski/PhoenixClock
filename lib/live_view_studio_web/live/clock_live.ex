@@ -213,7 +213,7 @@ defmodule LiveViewStudioWeb.ClockLive do
     # |> Map.put(5, "down-left")
     # |> Map.put(6, "left")
     # |> Map.put(7, "up-left")
-
+    # TODO: clean up above
 
     "hero-" <> Map.get(@icons, rem(seconds, 2), "")
   end
