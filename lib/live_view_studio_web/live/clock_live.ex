@@ -170,7 +170,6 @@ defmodule LiveViewStudioWeb.ClockLive do
   defp play_chime(socket, current_datetime) do
     time = current_datetime |> Timex.format!("{0m}{0s}")
     hr = current_datetime |> Timex.format!("{h24}")
-    # hr = current_datetime |> Timex.format!("{0m}")
     if (time >= "0000" and time <= "0001" and socket.assigns.last_chime_hr != hr) do
       hours = current_datetime |> Timex.format!("{h24}") |> String.to_integer()
       socket
