@@ -18,7 +18,7 @@
 }
 
 #seconds {
-  @apply text-xl text-white text-left scale-80 font-mono ;
+  @apply text-xl text-white text-left scale-100 font-mono ;
 }
 
 body {
