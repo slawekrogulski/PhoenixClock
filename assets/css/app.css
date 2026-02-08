@@ -16,6 +16,11 @@
 #date {
   @apply text-6xl text-white text-center font-semibold scale-100 py-4 ;
 }
+
+#seconds {
+  @apply text-xl text-green text-left scale-80 font-mono ;
+}
+
 body {
   @apply antialiased relative bg-slate-200 font-sans bg-black ;
 }
