@@ -21,6 +21,24 @@
   @apply text-xl text-white text-left scale-100 font-mono ;
 }
 
+#light {
+  @apply mt-8 max-w-xl mx-auto text-center;
+}
+#light button {
+  @apply bg-transparent mx-1 py-2 px-4 border-slate-400 border-2 rounded-lg shadow-sm transition ease-in-out duration-150 outline-none hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+#light img,
+#light svg {
+  @apply w-8;
+}
+#light .meter {
+  @apply flex h-12 overflow-hidden text-base bg-slate-300 rounded-lg mb-8;
+}
+#light .meter > span {
+  @apply flex flex-col justify-center text-slate-900 text-center whitespace-nowrap bg-yellow-300 font-bold w-0;
+  transition: width 2s ease;
+}
+
 body {
   @apply antialiased relative bg-slate-200 font-sans bg-black ;
 }
