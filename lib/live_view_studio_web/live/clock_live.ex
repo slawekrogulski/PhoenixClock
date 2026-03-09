@@ -174,11 +174,6 @@ defmodule LiveViewStudioWeb.ClockLive do
             end}>
           </span>
         </div>
-      <%!--
-        <span class="absolute inset-y-0 bg-blue-600 rounded-full transition-all duration-300 ease-linear"
-          style={if @is_reversing do "width: #{@percentage}%; right: 0; left: auto;" else "width: #{@percentage}%; left: 0; right: auto;" end }>
-        </span>
-      --%>
       </body>
     </div>
     """
