@@ -18,7 +18,6 @@ defmodule LiveViewStudioWeb.Router do
 
   scope "/", LiveViewStudioWeb do
     pipe_through [:browser, :require_authenticated_user]
-
   end
 
   scope "/", LiveViewStudioWeb do
@@ -55,16 +54,13 @@ defmodule LiveViewStudioWeb.Router do
 
   scope "/", LiveViewStudioWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
-
   end
 
   scope "/", LiveViewStudioWeb do
     pipe_through [:browser, :require_authenticated_user]
-
   end
 
   scope "/", LiveViewStudioWeb do
     pipe_through [:browser]
-
   end
 end

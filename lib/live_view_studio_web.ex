@@ -111,6 +111,7 @@ defmodule LiveViewStudioWeb do
         endpoint: LiveViewStudioWeb.Endpoint,
         router: LiveViewStudioWeb.Router,
         statics: LiveViewStudioWeb.static_paths()
+
       unquote(socket_helpers_auth())
     end
   end

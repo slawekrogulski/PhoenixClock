@@ -14,7 +14,7 @@ defmodule LiveViewStudio do
     end
   end
 
-    @doc """
+  @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
   defmacro __using__(which) when is_atom(which) do

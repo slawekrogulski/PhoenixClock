@@ -42,30 +42,56 @@ defmodule LiveViewStudioWeb.ClockLive do
   # @space7 "↑↗→↘↓↙←↖"
   # @space8 "▲►▼◄"
 
-  @day_names_english  %{1 => "Monday",       2 => "Tuesday", 3 => "Wednesday", 4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
-  @day_names_polish   %{1 => "Poniedziałek", 2 => "Wtorek",  3 => "Środa",     4 => "Czwartek", 5 => "Piątek", 6 => "Sobota",   7 => "Niedziela"}
-  @day_names_malay    %{1 => "Isnin",        2 => "Selasa",  3 => "Rabu",      4 => "Khamis",   5 => "Jumaat", 6 => "Sabtu",    7 => "Ahad"}
+  @day_names_english %{
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    4 => "Thursday",
+    5 => "Friday",
+    6 => "Saturday",
+    7 => "Sunday"
+  }
+  @day_names_polish %{
+    1 => "Poniedziałek",
+    2 => "Wtorek",
+    3 => "Środa",
+    4 => "Czwartek",
+    5 => "Piątek",
+    6 => "Sobota",
+    7 => "Niedziela"
+  }
+  @day_names_malay %{
+    1 => "Isnin",
+    2 => "Selasa",
+    3 => "Rabu",
+    4 => "Khamis",
+    5 => "Jumaat",
+    6 => "Sabtu",
+    7 => "Ahad"
+  }
   # @day_names_japanese %{1 => "月曜日",        2 => "火曜日",   3 => "水曜日",      4 => "木曜日",    5 => "金曜日",  6 => "土曜日",    7 => "日曜日"}
   # @day_names_japanese_romaji %{1 => "Getsuyoubi", 2 => "Kayoubi", 3 => "Suiyoubi", 4 => "Mokuyoubi", 5 => "Kinyoubi", 6 => "Doyoubi", 7 => "Nichiyoubi"}
   @day_names %{
     0 => @day_names_english,
     1 => @day_names_polish,
-    2 => @day_names_malay,
+    2 => @day_names_malay
     # 3 => @day_names_japanese,
     # 4 => @day_names_japanese_romaji
   }
-    @day_names_count @day_names |> Kernel.map_size()
+  @day_names_count @day_names |> Kernel.map_size()
 
   def mount(_params, _session, socket) do
-    timer_ref = if connected?(socket) do
-      {:ok, timer_ref} = :timer.send_interval(@timer_interval, self(), :tick)
-      local_time_zone(socket.assigns)
-      timer_ref
-    else
-      nil
-    end
+    timer_ref =
+      if connected?(socket) do
+        {:ok, timer_ref} = :timer.send_interval(@timer_interval, self(), :tick)
+        local_time_zone(socket.assigns)
+        timer_ref
+      else
+        nil
+      end
 
     current_datetime = Timex.now("Asia/Singapore")
+
     socket
     |> assign_current_time(current_datetime)
     |> assign_day_name(current_datetime)
@@ -79,16 +105,16 @@ defmodule LiveViewStudioWeb.ClockLive do
 
   def render(assigns) do
     ~H"""
-    <div id="s" phx-hook="AudioMp3" data-sounds={@sounds} >
-      <body >
+    <div id="s" phx-hook="AudioMp3" data-sounds={@sounds}>
+      <body>
         <div id="clock">
-          <%=@h1%><%=@h2%><%=@sp%><%=@m1%><%=@m2%>
+          {@h1}{@h2}{@sp}{@m1}{@m2}
         </div>
         <div id="day_name">
-          <%= @day_name %>
+          {@day_name}
         </div>
         <div id="date">
-          <%= @date %>
+          {@date}
         </div>
         <%!-- <div id="seconds">
             <%= @seconds %>
@@ -99,7 +125,6 @@ defmodule LiveViewStudioWeb.ClockLive do
             style={"width: #{@cyclicPercentage}%; left: 0; right: auto;"}>
           </span>
         </div> --%>
-
 
         <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden" role="progressbar" aria-valuenow={@percentage} aria-valuemin="0" aria-valuemax="100">
           <span class="block h-full bg-green-600 rounded-r-full transition-all duration-1000 ease-linear"
@@ -136,42 +161,82 @@ defmodule LiveViewStudioWeb.ClockLive do
           </span>
         </div> --%>
 
-        <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@percentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
-            style={if @is_reversing do
-              "width: #{@percentage}%; right: 0; left: auto;"
-            else
-              "width: #{@percentage}%; left: 0; right: auto;"
-            end}>
+        <div
+          class="w-full bg-black rounded-full h-4 overflow-hidden relative"
+          role="progressbar"
+          aria-valuenow={@percentage}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <span
+            class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
+            style={
+              if @is_reversing do
+                "width: #{@percentage}%; right: 0; left: auto;"
+              else
+                "width: #{@percentage}%; left: 0; right: auto;"
+              end
+            }
+          >
           </span>
         </div>
 
-        <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@percentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
-            style={if @is_reversing do
-              "width: #{@percentage}%; left: 0; right: auto;"
-            else
-              "width: #{@percentage}%; right: 0; left: auto;"
-            end}>
+        <div
+          class="w-full bg-black rounded-full h-4 overflow-hidden relative"
+          role="progressbar"
+          aria-valuenow={@percentage}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <span
+            class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
+            style={
+              if @is_reversing do
+                "width: #{@percentage}%; left: 0; right: auto;"
+              else
+                "width: #{@percentage}%; right: 0; left: auto;"
+              end
+            }
+          >
           </span>
         </div>
 
-        <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
-            style={if @is_reversing do
-              "width: #{@cyclicPercentage}%; left: 0; right: auto;"
-            else
-              "width: #{@cyclicPercentage}%; right: 0; left: auto;"
-            end}>
+        <div
+          class="w-full bg-black rounded-full h-4 overflow-hidden relative"
+          role="progressbar"
+          aria-valuenow={@cyclicPercentage}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <span
+            class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
+            style={
+              if @is_reversing do
+                "width: #{@cyclicPercentage}%; left: 0; right: auto;"
+              else
+                "width: #{@cyclicPercentage}%; right: 0; left: auto;"
+              end
+            }
+          >
           </span>
         </div>
-        <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
-            style={if @is_reversing do
-              "width: #{@cyclicPercentage}%; right: 0; left: auto;"
-            else
-              "width: #{@cyclicPercentage}%; left: 0; right: auto;"
-            end}>
+        <div
+          class="w-full bg-black rounded-full h-4 overflow-hidden relative"
+          role="progressbar"
+          aria-valuenow={@cyclicPercentage}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <span
+            class="absolute inset-y-0 bg-gray-200 rounded-full transition-all duration-1000 ease-linear"
+            style={
+              if @is_reversing do
+                "width: #{@cyclicPercentage}%; right: 0; left: auto;"
+              else
+                "width: #{@cyclicPercentage}%; left: 0; right: auto;"
+              end
+            }
+          >
           </span>
         </div>
       </body>
@@ -180,8 +245,8 @@ defmodule LiveViewStudioWeb.ClockLive do
   end
 
   defp assign_sounds(socket) do
+    # https://opengameart.org/content/16-button-clicks
     json =
-      # https://opengameart.org/content/16-button-clicks
       Jason.encode!(%{
         # "button02" - edited version
         click: ~p"/audio/button-click.mp3",
@@ -198,16 +263,18 @@ defmodule LiveViewStudioWeb.ClockLive do
     assign(socket, :sounds, json)
   end
 
-  def handle_event("local-timezone",  %{"local_timezone" => local_timezone}, socket) do
+  def handle_event("local-timezone", %{"local_timezone" => local_timezone}, socket) do
     IO.inspect(local_timezone, label: "!! local time zone")
-    socket |>
-    assign(local_timezone: local_timezone)
+
+    socket
+    |> assign(local_timezone: local_timezone)
     |> noreply()
   end
 
   def handle_info(:tick, socket) do
     local_timezone = Map.get(socket.assigns, :local_timezone, "Asia/Singapore")
     current_datetime = Timex.now(local_timezone)
+
     socket
     |> assign_current_time(current_datetime)
     |> assign_day_name(current_datetime)
@@ -220,6 +287,7 @@ defmodule LiveViewStudioWeb.ClockLive do
   defp assign_day_name(socket, current_datetime) do
     minute = current_datetime |> Timex.format!("{m}") |> String.to_integer()
     day_name = current_datetime |> Timex.weekday!() |> get_day_name(minute)
+
     socket
     |> assign(day_name: day_name)
   end
@@ -232,6 +300,7 @@ defmodule LiveViewStudioWeb.ClockLive do
   def local_time_zone(%{local_timezone: local_timezone}) do
     IO.inspect(local_timezone, label: "local time zone:")
   end
+
   def local_time_zone(_assigns) do
     IO.inspect("unknown", label: "local time zone")
   end
@@ -239,6 +308,7 @@ defmodule LiveViewStudioWeb.ClockLive do
   defp assign_current_time(socket, current_datetime) do
     # Format the DateTime
     <<h1, h2, m1, m2, s1, s2>> = current_datetime |> Timex.format!("{h24}{0m}{0s}")
+
     socket
     |> assign(h1: h1 |> number_as_emoji())
     |> assign(h2: h2 |> number_as_emoji())
@@ -258,8 +328,12 @@ defmodule LiveViewStudioWeb.ClockLive do
     secondsText = String.duplicate("█", seconds)
     # percentage = Integer.floor_div(seconds * 100, 60)
     percentage = trunc((seconds + 1) * 100 / 60)
-    cyclicPercentage = if rem(current_datetime.minute, 2) == 1, do: percentage, else: 100 - percentage
+
+    cyclicPercentage =
+      if rem(current_datetime.minute, 2) == 1, do: percentage, else: 100 - percentage
+
     is_reversing = rem(current_datetime.minute, 2) == 1
+
     socket
     |> assign(seconds: secondsText)
     |> assign(percentage: percentage)
@@ -271,8 +345,10 @@ defmodule LiveViewStudioWeb.ClockLive do
   defp play_chime(socket, current_datetime) do
     time = current_datetime |> Timex.format!("{0m}{0s}")
     hr = current_datetime |> Timex.format!("{h24}")
-    if (time >= "0000" and time <= "0001" and socket.assigns.last_chime_hr != hr) do
+
+    if time >= "0000" and time <= "0001" and socket.assigns.last_chime_hr != hr do
       hours = current_datetime |> Timex.format!("{h24}") |> String.to_integer()
+
       socket
       |> assign(last_chime_hr: hr)
       |> push_event("play-sound", play_sound_data(hours))
@@ -284,12 +360,12 @@ defmodule LiveViewStudioWeb.ClockLive do
     end
   end
 
-  defp play_sound_data(n) when n in [0, 12]   , do: %{name: "noon_midnight", count: 1}
-  defp play_sound_data(n) when rem(n, 2) == 0 , do: %{name: "chime_3s"     , count: chime_count(n)}
-  defp play_sound_data(n)                     , do: %{name: "tubular_1_5s" , count: chime_count(n)}
+  defp play_sound_data(n) when n in [0, 12], do: %{name: "noon_midnight", count: 1}
+  defp play_sound_data(n) when rem(n, 2) == 0, do: %{name: "chime_3s", count: chime_count(n)}
+  defp play_sound_data(n), do: %{name: "tubular_1_5s", count: chime_count(n)}
 
   defp chime_count(h) when h > 12, do: h - 12
-  defp chime_count(h)            , do: h
+  defp chime_count(h), do: h
 
   @icons %{
     0 => "arrows-pointing-in",
@@ -317,11 +393,12 @@ defmodule LiveViewStudioWeb.ClockLive do
 
     "hero-" <> Map.get(@icons, rem(seconds, 2), "")
   end
+
   defp spacer(s1, s2), do: String.at(@space033, rem(fromDigits(s1, s2), 2))
   # defp spacer(s1, s2), do: String.at(@space16, rem(fromDigits(s1, s2), 15))
 
   defp fromDigits(n1, n2), do: (n1 - 48) * 10 + (n2 - 48)
 
-  defp number_as_emoji(n) when n in 48..58, do: String.at(@display_chars1, (n - 48))
-  defp number_as_emoji(_),                  do: "?"
+  defp number_as_emoji(n) when n in 48..58, do: String.at(@display_chars1, n - 48)
+  defp number_as_emoji(_), do: "?"
 end
