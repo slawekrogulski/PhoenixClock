@@ -116,9 +116,6 @@ defmodule LiveViewStudioWeb.ClockLive do
         <div id="date">
           {@date}
         </div>
-        <%!-- <div id="seconds">
-            <%= @seconds %>
-        </div> --%>
 
         <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
           <span class="block h-full bg-green-200 rounded-r-full transition-all duration-1000 ease-linear"
