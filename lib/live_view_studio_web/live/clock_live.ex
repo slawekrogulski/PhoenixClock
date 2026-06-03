@@ -117,47 +117,6 @@ defmodule LiveViewStudioWeb.ClockLive do
           {@date}
         </div>
 
-        <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="block h-full bg-green-200 rounded-r-full transition-all duration-1000 ease-linear"
-            style={"width: #{@cyclicPercentage}%; left: 0; right: auto;"}>
-          </span>
-        </div> --%>
-
-        <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden" role="progressbar" aria-valuenow={@percentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="block h-full bg-green-600 rounded-r-full transition-all duration-1000 ease-linear"
-            style=
-              {"width: #{if @is_reversing, do: 100 - @percentage, else: @percentage}%;
-              transform: scaleX(#{if @is_reversing, do: "-1", else: "1"});
-              transform-origin: #{if @is_reversing, do: "right", else: "left"};"}>
-          </span>
-        </div>
-        <div class="mt-2 text-center text-xs text-gray-500">
-          Minute: <%= @minute %> (<%= if @is_reversing, do: "odd – reversing", else: "even – filling" %>)<br>
-          Progress: <%= @cyclicPercentage %>% <br>
-          Cyclic Percentage: <%= @cyclicPercentage %>% <br>
-          Is Reversing: <%= @is_reversing %> <br>
-        </div> --%>
-
-        <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-green-600 rounded-full transition-all duration-400 ease-linear"
-            style={if @is_reversing do
-                 "width: #{@percentage}%; right: 0; left: auto;"
-               else
-                 "width: 100%; left: #{@percentage * 100}; right: auto;"
-               end}>
-          </span>
-        </div> --%>
-
-        <%!-- <div class="w-full bg-black rounded-full h-4 overflow-hidden relative" role="progressbar" aria-valuenow={@cyclicPercentage} aria-valuemin="0" aria-valuemax="100">
-          <span class="absolute inset-y-0 bg-green-600 rounded-full transition-all duration-1000 ease-linear"
-            style={if @is_reversing do
-              "width: #{@cyclicPercentage}%; right: 0; left: auto;"
-            else
-              "width: #{@cyclicPercentage}%; left: 0; right: auto;"
-            end}>
-          </span>
-        </div> --%>
-
         <div
           class="w-full bg-black rounded-full h-4 overflow-hidden relative"
           role="progressbar"
