@@ -351,7 +351,6 @@ defmodule LiveViewStudioWeb.ClockLive do
   end
 
   defp spacer(s1, s2), do: String.at(@space033, rem(fromDigits(s1, s2), 2))
-  # defp spacer(s1, s2), do: String.at(@space16, rem(fromDigits(s1, s2), 15))
 
   defp fromDigits(n1, n2), do: (n1 - 48) * 10 + (n2 - 48)
 
