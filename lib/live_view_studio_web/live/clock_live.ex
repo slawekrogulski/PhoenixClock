@@ -309,9 +309,6 @@ defmodule LiveViewStudioWeb.ClockLive do
       |> assign(last_chime_hr: hr)
       |> push_event("play-sound", play_sound_data(hours))
     else
-      # d = %{
-      #   time: time, hr: hr, last_hr: socket.assigns.last_chime_hr
-      # }
       socket
     end
   end
