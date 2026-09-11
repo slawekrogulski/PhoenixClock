@@ -3,6 +3,8 @@ defmodule LiveViewStudioWeb.ClockLive do
 
   on_mount {LiveViewStudioWeb.Hooks.LocalTimeZoneHook, :default}
 
+  " TODO: add currency and precious metal look up "
+
   @timer_interval :timer.seconds(1)
 
   @display_chars1 "0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣"
