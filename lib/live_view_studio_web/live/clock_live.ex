@@ -284,7 +284,7 @@ defmodule LiveViewStudioWeb.ClockLive do
   def assign_seconds(socket, current_datetime) do
     seconds = current_datetime.second
     secondsText = String.duplicate("█", seconds)
-    # percentage = Integer.floor_div(seconds * 100, 60)
+    # percentage = Integer.floor_div(seconds * 100, 60) # TODO remove
     percentage = trunc((seconds + 1) * 100 / 60)
 
     cyclicPercentage =
