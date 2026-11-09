@@ -5,11 +5,12 @@ defmodule LiveViewStudio.MixProject do
     [
       app: :live_view_studio,
       version: "0.2.0",
-      elixir: "~> 1.18.2",
+      elixir: "~> 1.20.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      listeners: [Phoenix.CodeReloader]
     ]
   end
 
@@ -32,10 +33,10 @@ defmodule LiveViewStudio.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.19"},
-      {:phoenix_html, "~> 4.1"},
+      {:phoenix, "~> 1.8.16"},
+      {:phoenix_html, "~> 4.4"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.0.0"},
+      {:phoenix_live_view, "~> 1.2.13"},
       # {:heroicons,
       #  github: "tailwindlabs/heroicons",
       #  tag: "v2.1.1",
@@ -43,23 +44,26 @@ defmodule LiveViewStudio.MixProject do
       #  app: false,
       #  compile: false,
       #  depth: 1},
-      {:heroicons, "~> 0.5.6"},
+      {:heroicons, "~> 0.5.7"},
       {:floki, ">= 0.36.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.8.6"},
+      {:phoenix_live_dashboard, "~> 0.8.7"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
-      {:swoosh, "~> 1.17.8"},
-      {:finch, "~> 0.19"},
+      {:swoosh, "~> 1.29"},
+      {:finch, "~> 0.24"},
+      {:telemetry, "~> 1.4.1"},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.1.0"},
-      {:gettext, "~> 0.26.2"},
-      {:jason, "~> 1.4.4"},
-      {:plug_cowboy, "~> 2.7.2"},
-      {:bcrypt_elixir, "~> 3.2.0"},
-      {:faker, "~> 0.18.0"},
+      {:gettext, "~> 0.26"},
+      {:jason, "~> 1.4"},
+      {:plug_cowboy, "~> 2.9.0"},
+      {:bcrypt_elixir, "~> 3.2.1"},
+      {:faker, "~> 0.19.0"},
       {:number, "~> 1.0.5"},
-      {:timex, "~> 3.7.11"},
-      {:typed_struct, "~> 0.3.0"}
+      {:timex, "~> 4.0.0"},
+      {:typed_struct, "~> 0.3.0"},
+      {:decimal, "~> 3.2", override: true},
+      {:tzdata, "~> 1.1.5", override: true},
     ]
   end
 
